@@ -14,7 +14,7 @@ points = np.zeros((1, number_trys))
 rank = np.zeros((1, number_trys))
 rank_each_game = np.zeros((number_games, number_trys))
 
-points_earned_mean = np.linspace(0, 1, num=number_games)
+points_earned_mean = np.linspace(0, 5, num=number_games)
 points_earned_std = 10
 
 for games in range(number_games):
