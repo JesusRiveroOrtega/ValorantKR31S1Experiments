@@ -14,11 +14,11 @@ points = np.zeros((1, number_trys))
 rank = np.zeros((1, number_trys))
 rank_each_game = np.zeros((number_games, number_trys))
 
-points_earned_mean = 0
+points_earned_mean = np.linspace(0, 1, num=number_games)
 points_earned_std = 10
 
 for games in range(number_games):
-    points_earned_current_game = np.round(np.random.normal(loc = points_earned_mean, scale = points_earned_std, size=number_trys))
+    points_earned_current_game = np.round(np.random.normal(loc = points_earned_mean[games], scale = points_earned_std, size=number_trys))
     points += points_earned_current_game
     
     points_rank_decreasing_indexes = np.argwhere(points < 0)
@@ -50,8 +50,8 @@ plt.figure(2)
 plt.plot(average_rank_along_trys, color="k")
 plt.plot(average_rank_along_trys - std_rank_along_trys, color="m")
 plt.plot(average_rank_along_trys + std_rank_along_trys, color="m")
-plt.figure(3)
-s = (np.random.normal(loc = points_earned_mean, scale = points_earned_std, size=number_trys))
-count, bins, ignored = plt.hist(s, 30, density=True)
-plt.plot(bins, 1/(points_earned_std * np.sqrt(2 * np.pi)) * np.exp( - (bins - points_earned_mean)**2 / (2 * points_earned_std**2) ), linewidth=2, color='r')
-plt.show()
+#plt.figure(3)
+# s = (np.random.normal(loc = points_earned_mean, scale = points_earned_std, size=number_trys))
+# count, bins, ignored = plt.hist(s, 30, density=True)
+# plt.plot(bins, 1/(points_earned_std * np.sqrt(2 * np.pi)) * np.exp( - (bins - points_earned_mean)**2 / (2 * points_earned_std**2) ), linewidth=2, color='r')
+# plt.show()
